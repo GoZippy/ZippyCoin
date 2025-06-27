@@ -50,7 +50,7 @@ const Ecosystem = () => {
   ]
 
   return (
-    <section id="ecosystem" className="py-20 bg-slate-50">
+    <section id="ecosystem" className="py-20 bg-crypto-dark-900">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           className="text-center mb-16"
@@ -59,10 +59,10 @@ const Ecosystem = () => {
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
         >
-          <h2 className="text-3xl sm:text-4xl font-bold gradient-text mb-6">
+          <h2 className="gradient-text mb-6">
             Ecosystem & Integrations
           </h2>
-          <p className="text-xl text-slate-600 max-w-3xl mx-auto">
+          <p className="text-xl text-crypto-dark-300 max-w-3xl mx-auto leading-relaxed">
             ZippyCoin powers real-world applications and revolutionary financial protocols
             through the trusted Zippy Foundation ecosystem.
           </p>
@@ -73,7 +73,7 @@ const Ecosystem = () => {
           {integrations.map((integration, index) => (
             <motion.div
               key={index}
-              className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 border border-slate-200 hover:border-zippy-200 group"
+              className="card card-glow group"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: index * 0.2 }}
@@ -81,27 +81,31 @@ const Ecosystem = () => {
               whileHover={{ y: -5 }}
             >
               <div className="flex items-start justify-between mb-6">
-                <div className="p-3 bg-gradient-to-r from-zippy-500 to-quantum-500 rounded-xl">
+                <div className="p-4 bg-gradient-to-r from-zippy-600 to-zippy-700 rounded-xl shadow-lg shadow-zippy-600/25 group-hover:shadow-zippy-500/40 transition-all">
                   <integration.icon className="h-8 w-8 text-white" />
                 </div>
-                <span className="px-3 py-1 bg-zippy-100 text-zippy-700 rounded-full text-sm font-medium">
+                <span className={`px-3 py-1 rounded-full text-sm font-medium ${
+                  integration.status === 'Coming Soon' 
+                    ? 'bg-quantum-500/20 text-quantum-300 border border-quantum-500/30'
+                    : 'bg-zippy-500/20 text-zippy-300 border border-zippy-500/30'
+                }`}>
                   {integration.status}
                 </span>
               </div>
               
-              <h3 className="text-xl font-bold text-slate-900 mb-4 group-hover:text-zippy-600 transition-colors">
+              <h3 className="text-xl font-bold text-white mb-4 group-hover:text-zippy-300 transition-colors">
                 {integration.title}
               </h3>
               
-              <p className="text-slate-600 mb-6 leading-relaxed">
+              <p className="text-crypto-dark-300 mb-6 leading-relaxed">
                 {integration.description}
               </p>
               
-              <div className="space-y-2 mb-6">
+              <div className="space-y-3 mb-6">
                 {integration.features.map((feature, featureIndex) => (
-                  <div key={featureIndex} className="flex items-center space-x-2">
-                    <div className="w-2 h-2 bg-zippy-500 rounded-full"></div>
-                    <span className="text-sm text-slate-700 font-medium">{feature}</span>
+                  <div key={featureIndex} className="flex items-center space-x-3">
+                    <div className="w-2 h-2 bg-gradient-to-r from-zippy-400 to-quantum-400 rounded-full"></div>
+                    <span className="text-sm text-crypto-dark-200 font-medium">{feature}</span>
                   </div>
                 ))}
               </div>
@@ -111,10 +115,10 @@ const Ecosystem = () => {
                   href={integration.link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center space-x-2 text-zippy-600 hover:text-zippy-700 font-medium transition-colors"
+                  className="inline-flex items-center space-x-2 text-zippy-400 hover:text-zippy-300 font-medium transition-colors group"
                 >
                   <span>Learn More</span>
-                  <ExternalLink className="h-4 w-4" />
+                  <ExternalLink className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
                 </a>
               )}
             </motion.div>
@@ -123,7 +127,7 @@ const Ecosystem = () => {
 
         {/* DeFi Protocols */}
         <motion.div
-          className="bg-white rounded-3xl p-8 lg:p-12 shadow-xl"
+          className="gradient-bg-card border border-crypto-dark-700/50 rounded-3xl p-8 lg:p-12 shadow-2xl"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
@@ -133,7 +137,7 @@ const Ecosystem = () => {
             <h3 className="text-2xl lg:text-3xl font-bold gradient-text mb-4">
               Trust-Weighted DeFi Protocols
             </h3>
-            <p className="text-slate-600 text-lg max-w-2xl mx-auto">
+            <p className="text-crypto-dark-300 text-lg max-w-2xl mx-auto leading-relaxed">
               Revolutionary DeFi where your reputation and trust score unlock better rates, 
               lower fees, and enhanced benefits.
             </p>
@@ -143,7 +147,7 @@ const Ecosystem = () => {
             {defiProtocols.map((protocol, index) => (
               <motion.div
                 key={index}
-                className="relative overflow-hidden rounded-2xl p-6 bg-gradient-to-br from-slate-50 to-white border border-slate-200"
+                className="relative overflow-hidden rounded-2xl p-6 bg-crypto-dark-800/40 border border-crypto-dark-700/30 backdrop-blur-sm hover:border-zippy-500/30 transition-all"
                 initial={{ opacity: 0, scale: 0.8 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
@@ -153,15 +157,15 @@ const Ecosystem = () => {
                 <div className={`absolute top-0 right-0 w-20 h-20 bg-gradient-to-br ${protocol.color} opacity-10 rounded-bl-3xl`}></div>
                 
                 <div className="relative z-10">
-                  <div className={`inline-block px-4 py-2 rounded-lg bg-gradient-to-r ${protocol.color} text-white font-bold text-lg mb-4`}>
+                  <div className={`inline-block px-4 py-2 rounded-lg bg-gradient-to-r ${protocol.color} text-white font-bold text-lg mb-4 shadow-lg`}>
                     {protocol.multiplier}
                   </div>
                   
-                  <h4 className="text-lg font-bold text-slate-900 mb-3">
+                  <h4 className="text-lg font-bold text-white mb-3">
                     {protocol.name}
                   </h4>
                   
-                  <p className="text-slate-600 text-sm leading-relaxed">
+                  <p className="text-crypto-dark-300 text-sm leading-relaxed">
                     {protocol.description}
                   </p>
                 </div>
@@ -176,7 +180,7 @@ const Ecosystem = () => {
             transition={{ duration: 0.8, delay: 0.3 }}
             viewport={{ once: true }}
           >
-            <button className="bg-gradient-to-r from-zippy-500 to-quantum-500 text-white px-8 py-3 rounded-xl font-semibold hover:from-zippy-600 hover:to-quantum-600 transition-all shadow-lg hover:shadow-xl">
+            <button className="btn-primary">
               Explore DeFi Protocols
             </button>
           </motion.div>
@@ -184,17 +188,17 @@ const Ecosystem = () => {
 
         {/* Foundation Integration */}
         <motion.div
-          className="mt-16 bg-gradient-to-r from-zippy-900 to-quantum-900 rounded-3xl p-8 lg:p-12 text-white"
+          className="mt-16 bg-gradient-to-r from-crypto-dark-800 to-crypto-dark-900 rounded-3xl p-8 lg:p-12 border border-crypto-dark-700/50 shadow-2xl"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
         >
           <div className="max-w-4xl mx-auto text-center">
-            <h3 className="text-2xl lg:text-3xl font-bold mb-6">
+            <h3 className="text-2xl lg:text-3xl font-bold gradient-text mb-6">
               Powered by Zippy Foundation
             </h3>
-            <p className="text-slate-300 text-lg mb-8 leading-relaxed">
+            <p className="text-crypto-dark-300 text-lg mb-8 leading-relaxed">
               ZippyCoin is the backbone of the Zippy Foundation ecosystem, providing secure, 
               sustainable rewards for eco-friendly services and driving adoption through real-world utility.
             </p>
@@ -205,11 +209,15 @@ const Ecosystem = () => {
                 { icon: Coins, label: 'Instant Rewards', desc: 'Real-time ZippyCoin earnings' },
                 { icon: Users, label: 'Global Community', desc: 'Sustainable ecosystem growth' }
               ].map((item, index) => (
-                <div key={index} className="bg-white/10 rounded-xl p-4 backdrop-blur-sm border border-white/20">
+                <motion.div 
+                  key={index} 
+                  className="bg-crypto-dark-800/30 rounded-xl p-4 backdrop-blur-sm border border-crypto-dark-700/30 hover:border-zippy-500/30 transition-all"
+                  whileHover={{ scale: 1.05 }}
+                >
                   <item.icon className="h-8 w-8 text-zippy-400 mx-auto mb-3" />
-                  <h4 className="font-semibold mb-2">{item.label}</h4>
-                  <p className="text-sm text-slate-300">{item.desc}</p>
-                </div>
+                  <h4 className="font-semibold text-white mb-2">{item.label}</h4>
+                  <p className="text-sm text-crypto-dark-300">{item.desc}</p>
+                </motion.div>
               ))}
             </div>
 
@@ -217,10 +225,10 @@ const Ecosystem = () => {
               href="https://go.zippyfoundation.org"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center space-x-2 bg-white text-zippy-900 px-6 py-3 rounded-xl font-semibold hover:bg-slate-100 transition-colors"
+              className="inline-flex items-center space-x-2 btn-outline group"
             >
               <span>Visit Zippy Foundation</span>
-              <ExternalLink className="h-5 w-5" />
+              <ExternalLink className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
             </a>
           </div>
         </motion.div>

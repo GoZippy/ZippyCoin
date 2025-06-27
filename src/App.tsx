@@ -1,6 +1,7 @@
 import React from 'react'
 import { Routes, Route } from 'react-router-dom'
 import { motion } from 'framer-motion'
+import BetaBanner from './components/BetaBanner'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
 import Technology from './components/Technology'
@@ -29,16 +30,19 @@ function HomePage() {
 
 function App() {
   return (
-    <div className="min-h-screen bg-slate-50">
+    <div className="min-h-screen bg-crypto-dark-950">
+      <BetaBanner />
       <Navbar />
-      <main>
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/developers" element={<DeveloperPortal />} />
-          <Route path="/network" element={<NetworkStatus />} />
-        </Routes>
-      </main>
-      <Footer />
+      <div className="pt-[104px]">
+        <main>
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/developers" element={<DeveloperPortal />} />
+            <Route path="/network" element={<NetworkStatus />} />
+          </Routes>
+        </main>
+        <Footer />
+      </div>
     </div>
   )
 }
