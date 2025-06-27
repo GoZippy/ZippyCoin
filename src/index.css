@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -8,21 +9,78 @@
   }
   
   body {
-    @apply bg-slate-50 text-slate-900;
+    @apply bg-crypto-dark-950 text-slate-100 font-sans;
+    font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display;
+  }
+
+  h1 {
+    @apply text-4xl lg:text-6xl xl:text-7xl font-bold leading-tight tracking-tight;
+  }
+
+  h2 {
+    @apply text-3xl lg:text-4xl xl:text-5xl font-bold leading-tight tracking-tight;
+  }
+
+  h3 {
+    @apply text-2xl lg:text-3xl font-bold leading-tight;
+  }
+
+  h4 {
+    @apply text-xl lg:text-2xl font-semibold leading-tight;
+  }
+
+  p {
+    @apply leading-relaxed;
   }
 }
 
 @layer components {
   .gradient-text {
-    @apply bg-gradient-to-r from-zippy-600 via-quantum-500 to-zippy-700 bg-clip-text text-transparent;
+    @apply bg-gradient-to-r from-zippy-400 via-zippy-300 to-quantum-400 bg-clip-text text-transparent;
   }
   
-  .quantum-glow {
-    @apply shadow-lg shadow-quantum-500/25;
+  .gradient-text-secondary {
+    @apply bg-gradient-to-r from-quantum-400 to-zippy-400 bg-clip-text text-transparent;
   }
-  
-  .zippy-glow {
-    @apply shadow-lg shadow-zippy-500/25;
+
+  .gradient-bg-subtle {
+    @apply bg-gradient-to-br from-crypto-dark-900/50 via-zippy-950/30 to-quantum-950/30;
+  }
+
+  .gradient-bg-card {
+    @apply bg-gradient-to-br from-crypto-dark-800/40 to-crypto-dark-900/60 backdrop-blur-sm;
+  }
+
+  .btn-primary {
+    @apply bg-gradient-to-r from-zippy-600 to-zippy-700 hover:from-zippy-500 hover:to-zippy-600 text-white font-semibold px-8 py-4 rounded-xl transition-all duration-300 shadow-lg shadow-zippy-600/25 hover:shadow-zippy-500/40 hover:scale-105 active:scale-95;
+  }
+
+  .btn-secondary {
+    @apply bg-gradient-to-r from-quantum-600 to-quantum-700 hover:from-quantum-500 hover:to-quantum-600 text-white font-semibold px-8 py-4 rounded-xl transition-all duration-300 shadow-lg shadow-quantum-600/25 hover:shadow-quantum-500/40 hover:scale-105 active:scale-95;
+  }
+
+  .btn-outline {
+    @apply border-2 border-zippy-500/50 hover:border-zippy-400 text-zippy-400 hover:text-white hover:bg-zippy-500/10 font-semibold px-8 py-4 rounded-xl transition-all duration-300 backdrop-blur-sm;
+  }
+
+  .card {
+    @apply gradient-bg-card border border-crypto-dark-700/50 rounded-2xl p-6 shadow-xl hover:shadow-2xl transition-all duration-300 hover:border-zippy-500/30;
+  }
+
+  .card-glow {
+    @apply relative overflow-hidden before:absolute before:inset-0 before:bg-gradient-to-r before:from-zippy-500/10 before:via-transparent before:to-quantum-500/10 before:opacity-0 hover:before:opacity-100 before:transition-opacity before:duration-500;
+  }
+
+  .feature-badge {
+    @apply inline-flex items-center px-4 py-2 bg-crypto-dark-800/60 border border-crypto-dark-600/50 rounded-lg text-sm font-medium backdrop-blur-sm;
+  }
+
+  .stats-card {
+    @apply text-center p-6 rounded-2xl bg-gradient-to-br from-crypto-dark-800/30 to-crypto-dark-900/50 border border-crypto-dark-700/30 backdrop-blur-sm;
   }
 }
 
@@ -32,13 +90,23 @@
 }
 
 ::-webkit-scrollbar-track {
-  @apply bg-slate-100;
+  @apply bg-crypto-dark-900;
 }
 
 ::-webkit-scrollbar-thumb {
-  @apply bg-zippy-400 rounded-full;
+  @apply bg-zippy-600 rounded-full;
 }
 
 ::-webkit-scrollbar-thumb:hover {
   @apply bg-zippy-500;
+}
+
+/* Selection */
+::selection {
+  @apply bg-zippy-500/30 text-white;
+}
+
+/* Focus styles */
+:focus-visible {
+  @apply outline-2 outline-offset-2 outline-zippy-500;
 }

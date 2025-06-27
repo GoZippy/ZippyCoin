@@ -29,7 +29,7 @@ const Navbar = () => {
     <motion.nav
       className={`fixed top-0 w-full z-50 transition-all duration-300 ${
         scrolled 
-          ? 'bg-white/95 backdrop-blur-md shadow-lg border-b border-slate-200' 
+          ? 'bg-crypto-dark-950/90 backdrop-blur-md shadow-xl border-b border-crypto-dark-800/50' 
           : 'bg-transparent'
       }`}
       initial={{ y: -100 }}
@@ -39,11 +39,11 @@ const Navbar = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
-          <Link to="/" className="flex items-center space-x-2">
-            <div className="p-2 bg-gradient-to-r from-zippy-500 to-quantum-500 rounded-lg">
+          <Link to="/" className="flex items-center space-x-3 group">
+            <div className="p-2 bg-gradient-to-r from-zippy-600 to-zippy-700 rounded-lg shadow-lg group-hover:shadow-zippy-500/25 transition-all">
               <Zap className="h-6 w-6 text-white" />
             </div>
-            <span className="text-xl font-bold gradient-text">ZippyCoin</span>
+            <span className="text-xl font-display font-bold gradient-text">ZippyCoin</span>
           </Link>
 
           {/* Desktop Navigation */}
@@ -52,29 +52,29 @@ const Navbar = () => {
               <Link
                 key={item.name}
                 to={item.href}
-                className={`text-sm font-medium transition-colors hover:text-zippy-600 ${
+                className={`text-sm font-medium transition-colors relative group ${
                   location.pathname === item.href || 
                   (item.href.startsWith('#') && location.pathname === '/')
-                    ? 'text-zippy-600' 
-                    : scrolled ? 'text-slate-700' : 'text-white'
+                    ? 'text-zippy-400' 
+                    : 'text-crypto-dark-300 hover:text-white'
                 }`}
               >
                 {item.name}
+                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-zippy-400 to-quantum-400 group-hover:w-full transition-all duration-300"></span>
               </Link>
             ))}
             <a
               href="https://go.zippyfoundation.org"
               target="_blank"
               rel="noopener noreferrer"
-              className={`flex items-center space-x-1 text-sm font-medium transition-colors hover:text-zippy-600 ${
-                scrolled ? 'text-slate-700' : 'text-white'
-              }`}
+              className="flex items-center space-x-1 text-sm font-medium text-crypto-dark-300 hover:text-white transition-colors relative group"
             >
               <span>Foundation</span>
               <ExternalLink className="h-3 w-3" />
+              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-zippy-400 to-quantum-400 group-hover:w-full transition-all duration-300"></span>
             </a>
             <motion.button
-              className="bg-gradient-to-r from-zippy-500 to-quantum-500 text-white px-4 py-2 rounded-lg text-sm font-medium hover:from-zippy-600 hover:to-quantum-600 transition-all"
+              className="btn-primary text-sm px-6 py-2.5"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
@@ -86,9 +86,7 @@ const Navbar = () => {
           <div className="md:hidden">
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className={`p-2 rounded-md ${
-                scrolled ? 'text-slate-700' : 'text-white'
-              }`}
+              className="p-2 rounded-md text-crypto-dark-300 hover:text-white hover:bg-crypto-dark-800/50 transition-colors"
             >
               {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
             </button>
@@ -99,17 +97,17 @@ const Navbar = () => {
       {/* Mobile menu */}
       {isOpen && (
         <motion.div
-          className="md:hidden bg-white border-t border-slate-200"
+          className="md:hidden bg-crypto-dark-950/95 backdrop-blur-md border-t border-crypto-dark-800/50"
           initial={{ opacity: 0, height: 0 }}
           animate={{ opacity: 1, height: 'auto' }}
           exit={{ opacity: 0, height: 0 }}
         >
-          <div className="px-4 py-2 space-y-1">
+          <div className="px-4 py-4 space-y-2">
             {navItems.map((item) => (
               <Link
                 key={item.name}
                 to={item.href}
-                className="block px-3 py-2 text-slate-700 hover:text-zippy-600 hover:bg-slate-50 rounded-md text-sm font-medium"
+                className="block px-4 py-3 text-crypto-dark-300 hover:text-white hover:bg-crypto-dark-800/50 rounded-lg text-sm font-medium transition-colors"
                 onClick={() => setIsOpen(false)}
               >
                 {item.name}
@@ -119,12 +117,12 @@ const Navbar = () => {
               href="https://go.zippyfoundation.org"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center space-x-1 px-3 py-2 text-slate-700 hover:text-zippy-600 hover:bg-slate-50 rounded-md text-sm font-medium"
+              className="flex items-center space-x-2 px-4 py-3 text-crypto-dark-300 hover:text-white hover:bg-crypto-dark-800/50 rounded-lg text-sm font-medium transition-colors"
             >
               <span>Foundation</span>
               <ExternalLink className="h-3 w-3" />
             </a>
-            <button className="w-full mt-2 bg-gradient-to-r from-zippy-500 to-quantum-500 text-white px-4 py-2 rounded-lg text-sm font-medium">
+            <button className="w-full mt-4 btn-primary text-sm px-6 py-3">
               Get Wallet
             </button>
           </div>
