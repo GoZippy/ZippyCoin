@@ -30,7 +30,7 @@ const Hero = () => {
             transition={{ delay: 0.2, duration: 0.5 }}
           >
             <span className="w-2 h-2 bg-green-400 rounded-full mr-2 animate-pulse"></span>
-            Mainnet launching Q1 2025
+            Mainnet launching Q3 2025
           </motion.div>
 
           {/* Main heading */}
