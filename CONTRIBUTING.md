@@ -1,6 +1,6 @@
-# Contributing to ZippyCoin v2.0.0
+# Contributing to ZippyCoin
 
-Thank you for your interest in contributing to ZippyCoin v2.0.0! This document provides guidelines for contributing to the open-source documentation, examples, and community tools.
+Thank you for your interest in contributing to ZippyCoin! This document provides guidelines for contributing to the open-source documentation, examples, and community tools.
 
 ## 🤝 How to Contribute
 
@@ -32,8 +32,8 @@ Thank you for your interest in contributing to ZippyCoin v2.0.0! This document p
 1. **Fork the repository**
    ```bash
    # Fork on GitHub, then clone your fork
-   git clone https://github.com/YOUR_USERNAME/ZippyCoin_v2.0.0.git
-   cd ZippyCoin_v2.0.0
+   git clone https://github.com/YOUR_USERNAME/ZippyCoin.git
+   cd ZippyCoin
    ```
 
 2. **Create a branch**
@@ -237,6 +237,6 @@ By contributing to this repository, you agree that your contributions will be li
 
 ---
 
-**Thank you for contributing to ZippyCoin v2.0.0!**
+**Thank you for contributing to ZippyCoin!**
 
 Your contributions help make cryptocurrency more secure, scalable, and accessible to everyone. 
