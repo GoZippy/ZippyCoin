@@ -1,4 +1,3 @@
-import React from 'react'
 import { motion } from 'framer-motion'
 import { MessageSquare, Github, Twitter, Users, BookOpen, Code, ExternalLink, ArrowRight } from 'lucide-react'
 

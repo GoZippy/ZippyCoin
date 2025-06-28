@@ -1,6 +1,5 @@
-import React from 'react'
 import { motion } from 'framer-motion'
-import { Bike, Coins, TrendingUp, Shield, Users, Zap, ExternalLink } from 'lucide-react'
+import { Bike, Coins, TrendingUp, Shield, Users, ExternalLink } from 'lucide-react'
 
 const Ecosystem = () => {
   const integrations = [
