@@ -29,11 +29,26 @@ function HomePage() {
 }
 
 function App() {
+  const [bannerVisible, setBannerVisible] = React.useState(true)
+
+  React.useEffect(() => {
+    const checkBannerVisibility = () => {
+      const dismissed = localStorage.getItem('beta-banner-dismissed')
+      setBannerVisible(dismissed !== 'true')
+    }
+    
+    checkBannerVisibility()
+    
+    // Listen for storage changes to update banner visibility
+    window.addEventListener('storage', checkBannerVisibility)
+    return () => window.removeEventListener('storage', checkBannerVisibility)
+  }, [])
+
   return (
     <div className="min-h-screen bg-crypto-dark-950">
       <BetaBanner />
       <Navbar />
-      <div className="pt-[124px]"> {/* 60px banner + 64px navbar */}
+      <div className={bannerVisible ? "pt-[124px]" : "pt-16"}> {/* 60px banner + 64px navbar OR just 64px navbar */}
         <main>
           <Routes>
             <Route path="/" element={<HomePage />} />

@@ -10,6 +10,7 @@ const Navbar = () => {
   const [scrolled, setScrolled] = useState(false)
   const [showAuthModal, setShowAuthModal] = useState(false)
   const [showUserMenu, setShowUserMenu] = useState(false)
+  const [bannerVisible, setBannerVisible] = useState(true)
   const location = useLocation()
   const { user, signOut } = useAuth()
 
@@ -21,6 +22,18 @@ const Navbar = () => {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
+  useEffect(() => {
+    const checkBannerVisibility = () => {
+      const dismissed = localStorage.getItem('beta-banner-dismissed')
+      setBannerVisible(dismissed !== 'true')
+    }
+    
+    checkBannerVisibility()
+    
+    // Listen for storage changes to update banner visibility
+    window.addEventListener('storage', checkBannerVisibility)
+    return () => window.removeEventListener('storage', checkBannerVisibility)
+  }, [])
   const navItems = [
     { name: 'Technology', href: '#technology' },
     { name: 'Ecosystem', href: '#ecosystem' },
@@ -33,6 +46,8 @@ const Navbar = () => {
   return (
     <motion.nav
       className={`fixed top-0 w-full z-50 transition-all duration-300 ${
+        bannerVisible ? 'top-[60px]' : 'top-0'
+      } ${
         scrolled 
           ? 'bg-crypto-dark-950/90 backdrop-blur-md shadow-xl border-b border-crypto-dark-800/50' 
           : 'bg-transparent'

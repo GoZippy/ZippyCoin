@@ -15,6 +15,8 @@ const BetaBanner = () => {
   const handleDismiss = () => {
     setIsVisible(false)
     localStorage.setItem('beta-banner-dismissed', 'true')
+    // Trigger storage event for other components to listen
+    window.dispatchEvent(new Event('storage'))
   }
 
   return (
