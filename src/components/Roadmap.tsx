@@ -1,4 +1,3 @@
-import React from 'react'
 import { motion } from 'framer-motion'
 import { CheckCircle, Circle, Clock, Rocket, Users, Globe } from 'lucide-react'
 
