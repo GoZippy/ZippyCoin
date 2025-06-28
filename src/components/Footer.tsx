@@ -1,32 +1,31 @@
-import React from 'react'
 import { Link } from 'react-router-dom'
 import { Zap, Github, Twitter, MessageSquare, ExternalLink, Mail } from 'lucide-react'
 
 const Footer = () => {
   const footerLinks = {
     Technology: [
-      { name: 'Architecture', href: '#technology' },
-      { name: 'Trust Engine', href: '#technology' },
-      { name: 'Security', href: '#technology' },
-      { name: 'Performance', href: '#technology' }
+      { name: 'Architecture', href: '#technology', external: false },
+      { name: 'Trust Engine', href: '#technology', external: false },
+      { name: 'Security', href: '#technology', external: false },
+      { name: 'Performance', href: '#technology', external: false }
     ],
     Ecosystem: [
       { name: 'Zippy.Bike', href: 'https://go.zippyfoundation.org', external: true },
-      { name: 'DeFi Protocols', href: '#ecosystem' },
-      { name: 'Origin Wallets', href: '#ecosystem' },
-      { name: 'Partnerships', href: '#ecosystem' }
+      { name: 'DeFi Protocols', href: '#ecosystem', external: false },
+      { name: 'Origin Wallets', href: '#ecosystem', external: false },
+      { name: 'Partnerships', href: '#ecosystem', external: false }
     ],
     Developers: [
-      { name: 'Documentation', href: '/developers' },
-      { name: 'API Reference', href: '/developers' },
-      { name: 'Code Examples', href: '/developers' },
+      { name: 'Documentation', href: '/developers', external: false },
+      { name: 'API Reference', href: '/developers', external: false },
+      { name: 'Code Examples', href: '/developers', external: false },
       { name: 'GitHub', href: 'https://github.com/zippyfoundation/ZippyCoin_v2.0.0', external: true }
     ],
     Community: [
       { name: 'Discord', href: 'https://discord.gg/zippycoin', external: true },
       { name: 'Twitter', href: 'https://twitter.com/zippyfoundation', external: true },
       { name: 'Contributing', href: 'https://github.com/zippyfoundation/ZippyCoin_v2.0.0/blob/main/CONTRIBUTING.md', external: true },
-      { name: 'Support', href: '#community' }
+      { name: 'Support', href: '#community', external: false }
     ]
   }
 
