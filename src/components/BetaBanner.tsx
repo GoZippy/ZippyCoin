@@ -21,7 +21,7 @@ const BetaBanner = () => {
     <AnimatePresence>
       {isVisible && (
         <motion.div
-          className="fixed top-0 left-0 right-0 z-50 bg-crypto-dark-950/80 backdrop-blur-md border-b border-crypto-dark-700/30"
+          className="fixed top-0 left-0 right-0 z-50 bg-crypto-dark-950/80 backdrop-blur-md border-b border-crypto-dark-700/30 h-[60px]"
           initial={{ y: -60, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           exit={{ y: -60, opacity: 0 }}
