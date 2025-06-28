@@ -33,7 +33,7 @@ function App() {
     <div className="min-h-screen bg-crypto-dark-950">
       <BetaBanner />
       <Navbar />
-      <div className="pt-[104px]">
+      <div className="pt-[124px]"> {/* 60px banner + 64px navbar */}
         <main>
           <Routes>
             <Route path="/" element={<HomePage />} />

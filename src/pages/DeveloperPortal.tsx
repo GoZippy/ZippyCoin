@@ -104,7 +104,7 @@ const trustScore = await api.getTrustScore('wallet-address');`
   ]
 
   return (
-    <div className="min-h-screen bg-slate-50 pt-20">
+    <div className="min-h-screen bg-crypto-dark-950 pt-32">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         {/* Header */}
         <motion.div

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { X, AlertTriangle } from 'lucide-react'
+import { X, Info } from 'lucide-react'
 
 const BetaBanner = () => {
   const [isVisible, setIsVisible] = useState(true)
@@ -21,31 +21,33 @@ const BetaBanner = () => {
     <AnimatePresence>
       {isVisible && (
         <motion.div
-          className="fixed top-0 left-0 right-0 z-50 bg-gradient-to-r from-quantum-600 to-quantum-700 text-white shadow-lg"
-          initial={{ y: -100, opacity: 0 }}
+          className="fixed top-0 left-0 right-0 z-50 bg-crypto-dark-950/80 backdrop-blur-md border-b border-crypto-dark-700/30"
+          initial={{ y: -60, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
-          exit={{ y: -100, opacity: 0 }}
-          transition={{ duration: 0.3 }}
+          exit={{ y: -60, opacity: 0 }}
+          transition={{ duration: 0.3, ease: "easeOut" }}
         >
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="flex items-center justify-between py-2.5 text-sm">
+            <div className="flex items-center justify-between py-3 text-sm">
               <div className="flex items-center space-x-3">
-                <AlertTriangle className="h-4 w-4 text-quantum-200 flex-shrink-0" />
-                <span className="font-medium">
-                  <span className="hidden sm:inline">Beta Version: </span>
-                  This site is under active development and may contain placeholder data.
-                  <span className="hidden md:inline ml-2">
-                    Features and information are subject to change.
+                <div className="p-1.5 bg-zippy-500/20 rounded-full">
+                  <Info className="h-3.5 w-3.5 text-zippy-400 flex-shrink-0" />
+                </div>
+                <span className="text-crypto-dark-200 font-medium">
+                  <span className="text-zippy-300 font-semibold">Beta Preview:</span>
+                  <span className="ml-2">This site contains placeholder data and is under active development.</span>
+                  <span className="hidden lg:inline text-crypto-dark-300 ml-2">
+                    All features and information are subject to change as we build toward mainnet launch.
                   </span>
                 </span>
               </div>
               
               <button
                 onClick={handleDismiss}
-                className="ml-4 p-1 rounded-full hover:bg-quantum-500/30 transition-colors flex-shrink-0"
+                className="ml-4 p-1.5 rounded-full hover:bg-crypto-dark-700/50 transition-colors flex-shrink-0 group"
                 aria-label="Dismiss banner"
               >
-                <X className="h-4 w-4" />
+                <X className="h-4 w-4 text-crypto-dark-400 group-hover:text-white transition-colors" />
               </button>
             </div>
           </div>
