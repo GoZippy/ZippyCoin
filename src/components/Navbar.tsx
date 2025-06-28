@@ -1,12 +1,17 @@
 import React, { useState, useEffect } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { motion } from 'framer-motion'
-import { Menu, X, Zap, ExternalLink } from 'lucide-react'
+import { Menu, X, Zap, ExternalLink, User, LogOut } from 'lucide-react'
+import { useAuth } from '../hooks/useAuth'
+import AuthModal from './Auth/AuthModal'
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
+  const [showAuthModal, setShowAuthModal] = useState(false)
+  const [showUserMenu, setShowUserMenu] = useState(false)
   const location = useLocation()
+  const { user, signOut } = useAuth()
 
   useEffect(() => {
     const handleScroll = () => {
@@ -73,13 +78,57 @@ const Navbar = () => {
               <ExternalLink className="h-3 w-3" />
               <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-zippy-400 to-quantum-400 group-hover:w-full transition-all duration-300"></span>
             </a>
-            <motion.button
-              className="btn-primary text-sm px-6 py-2.5"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              Get Wallet
-            </motion.button>
+            
+            {user ? (
+              <div className="relative">
+                <motion.button
+                  onClick={() => setShowUserMenu(!showUserMenu)}
+                  className="flex items-center space-x-2 p-2 rounded-lg bg-crypto-dark-800/60 border border-crypto-dark-600/50 hover:border-zippy-500/50 transition-all"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  <User className="h-5 w-5 text-zippy-400" />
+                  <span className="text-sm font-medium text-white">{user.email?.split('@')[0]}</span>
+                </motion.button>
+
+                {showUserMenu && (
+                  <motion.div
+                    className="absolute right-0 mt-2 w-48 bg-crypto-dark-900 rounded-lg shadow-xl border border-crypto-dark-700/50 py-2"
+                    initial={{ opacity: 0, y: -10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -10 }}
+                  >
+                    <Link
+                      to="/wallet"
+                      className="flex items-center space-x-2 px-4 py-2 text-sm text-crypto-dark-200 hover:text-white hover:bg-crypto-dark-800/50 transition-colors"
+                      onClick={() => setShowUserMenu(false)}
+                    >
+                      <User className="h-4 w-4" />
+                      <span>My Wallet</span>
+                    </Link>
+                    <button
+                      onClick={() => {
+                        signOut()
+                        setShowUserMenu(false)
+                      }}
+                      className="w-full flex items-center space-x-2 px-4 py-2 text-sm text-crypto-dark-200 hover:text-white hover:bg-crypto-dark-800/50 transition-colors"
+                    >
+                      <LogOut className="h-4 w-4" />
+                      <span>Sign Out</span>
+                    </button>
+                  </motion.div>
+                )}
+              </div>
+            ) : (
+              <motion.button
+                onClick={() => setShowAuthModal(true)}
+                className="btn-primary text-sm px-6 py-2.5"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                Get Wallet
+              </motion.button>
+            )}
           </div>
 
           {/* Mobile menu button */}
@@ -123,11 +172,16 @@ const Navbar = () => {
               <ExternalLink className="h-3 w-3" />
             </a>
             <button className="w-full mt-4 btn-primary text-sm px-6 py-3">
-              Get Wallet
+              {user ? 'My Wallet' : 'Get Wallet'}
             </button>
           </div>
         </motion.div>
       )}
+
+      <AuthModal 
+        isOpen={showAuthModal} 
+        onClose={() => setShowAuthModal(false)} 
+      />
     </motion.nav>
   )
 }
