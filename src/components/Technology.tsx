@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { Shield, Cpu, Network, Users } from 'lucide-react'
+import { Shield, Cpu, Network } from 'lucide-react'
 
 const Technology = () => {
   const technologies = [

@@ -1,6 +1,5 @@
-import React from 'react'
 import { motion } from 'framer-motion'
-import { Code, BookOpen, Download, ExternalLink, Github, Terminal, FileText, Zap } from 'lucide-react'
+import { Code, BookOpen, Download, ExternalLink, Github, Terminal } from 'lucide-react'
 
 const DeveloperPortal = () => {
   const resources = [
