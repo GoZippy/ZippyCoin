@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { Brain, Shield, Network, Calculator, TrendingUp, Users, CheckCircle, ArrowRight, ExternalLink } from 'lucide-react'
+import { Brain, Shield, Network, Calculator, TrendingUp, Users, CheckCircle, ArrowRight, Zap } from 'lucide-react'
 import { useState, useEffect } from 'react'
 
 const ZippyTrust = () => {
@@ -289,9 +289,9 @@ const ZippyTrust = () => {
           </div>
         </motion.div>
 
-        {/* Foundation Integration */}
+        {/* Technology Integration */}
         <motion.div
-          className="bg-gradient-to-r from-green-900/40 to-crypto-dark-900/60 rounded-3xl p-8 lg:p-12 border border-green-500/30 shadow-2xl"
+          className="bg-gradient-to-r from-zippy-900/40 to-crypto-dark-900/60 rounded-3xl p-8 lg:p-12 border border-zippy-500/30 shadow-2xl"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.4 }}
@@ -299,18 +299,18 @@ const ZippyTrust = () => {
         >
           <div className="max-w-4xl mx-auto text-center">
             <h3 className="text-2xl lg:text-3xl font-bold text-white mb-6">
-              Powering <span className="text-green-400">Zippy.Bike</span> Trust Network
+              Powering the <span className="text-zippy-400">ZippyCoin</span> Ecosystem
             </h3>
             <p className="text-crypto-dark-300 text-lg mb-8 leading-relaxed">
-              ZippyTrust enables real-world trust scoring for eco-couriers, allowing 
-              better service matching, pricing, and reputation management across the Zippy Foundation ecosystem.
+              ZippyTrust enables revolutionary trust-based economics in DeFi, allowing 
+              better risk assessment, fair pricing, and reputation-based access control across our ecosystem.
             </p>
             
             <div className="grid sm:grid-cols-3 gap-6 mb-8">
               {[
-                { label: 'Active Couriers', value: '50K+', icon: Users },
-                { label: 'Trust Interactions', value: '2M+', icon: Network },
-                { label: 'Avg Trust Score', value: '89.3', icon: TrendingUp }
+                { label: 'DeFi Protocols', value: '12+', icon: Zap },
+                { label: 'Trust Calculations', value: '1M+', icon: Calculator },
+                { label: 'Network Validators', value: '127', icon: Shield }
               ].map((stat, index) => (
                 <motion.div
                   key={index}
@@ -321,33 +321,32 @@ const ZippyTrust = () => {
                   viewport={{ once: true }}
                   whileHover={{ scale: 1.05 }}
                 >
-                  <stat.icon className="h-8 w-8 text-green-400 mx-auto mb-3" />
-                  <div className="text-2xl font-bold text-green-400 mb-1">{stat.value}</div>
+                  <stat.icon className="h-8 w-8 text-zippy-400 mx-auto mb-3" />
+                  <div className="text-2xl font-bold text-zippy-400 mb-1">{stat.value}</div>
                   <div className="text-sm text-crypto-dark-300">{stat.label}</div>
                 </motion.div>
               ))}
             </div>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <motion.a
-                href="https://go.zippyfoundation.org"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center space-x-2 bg-green-500 hover:bg-green-400 text-white px-6 py-3 rounded-xl font-semibold transition-colors shadow-lg"
+              <motion.button
+                onClick={() => document.getElementById('ecosystem')?.scrollIntoView({ behavior: 'smooth' })}
+                className="inline-flex items-center space-x-2 bg-zippy-500 hover:bg-zippy-400 text-white px-6 py-3 rounded-xl font-semibold transition-colors shadow-lg"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
-                <span>Explore Zippy.Bike</span>
-                <ExternalLink className="h-5 w-5" />
-              </motion.a>
+                <span>Explore DeFi Protocols</span>
+                <ArrowRight className="h-5 w-5" />
+              </motion.button>
               
               <motion.button
+                onClick={() => document.getElementById('technology')?.scrollIntoView({ behavior: 'smooth' })}
                 className="inline-flex items-center space-x-2 btn-outline"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
                 <span>Learn About Trust Engine</span>
-                <ArrowRight className="h-5 w-5" />
+                <Brain className="h-5 w-5" />
               </motion.button>
             </div>
           </div>

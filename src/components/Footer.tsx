@@ -1,13 +1,13 @@
 import { Link } from 'react-router-dom'
-import { Zap, Github, Twitter, MessageSquare, ExternalLink, Mail, Bike, Brain, Globe } from 'lucide-react'
+import { Zap, Github, Twitter, MessageSquare, ExternalLink, Mail, Brain, Globe, Shield } from 'lucide-react'
 
 const Footer = () => {
   const ecosystemLinks = {
-    'Zippy Foundation': [
-      { name: 'Zippy.Bike', href: 'https://go.zippyfoundation.org', external: true, icon: Bike },
+    'ZippyCoin Ecosystem': [
       { name: 'ZippyTrust Engine', href: '#zippytrust', external: false, icon: Brain },
-      { name: 'Foundation Portal', href: 'https://go.zippyfoundation.org/about', external: true, icon: Globe },
-      { name: 'Impact Reports', href: 'https://go.zippyfoundation.org/impact', external: true, icon: ExternalLink }
+      { name: 'DeFi Protocols', href: '#ecosystem', external: false, icon: Zap },
+      { name: 'Developer Portal', href: '/developers', external: false, icon: Globe },
+      { name: 'Network Status', href: '/network', external: false, icon: Shield }
     ]
   }
 
@@ -46,26 +46,26 @@ const Footer = () => {
   ]
 
   const stats = [
-    { label: 'Active Couriers', value: '50K+' },
-    { label: 'ZPC Distributed', value: '2.5M' },
-    { label: 'CO₂ Saved', value: '500 tons' },
-    { label: 'Countries', value: '12+' }
+    { label: 'Daily Transactions', value: '100K+' },
+    { label: 'ZPC Circulating', value: '50M' },
+    { label: 'Network Validators', value: '127' },
+    { label: 'Countries', value: '25+' }
   ]
 
   return (
     <footer className="bg-crypto-dark-950 border-t border-crypto-dark-800/50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        {/* Ecosystem Stats Header */}
+        {/* Network Stats Header */}
         <div className="border-b border-crypto-dark-800/50 pb-12 mb-12">
           <div className="text-center mb-8">
-            <h3 className="text-2xl font-bold gradient-text mb-4">Zippy Foundation Ecosystem Impact</h3>
-            <p className="text-crypto-dark-300">Real-world impact powered by ZippyCoin technology</p>
+            <h3 className="text-2xl font-bold gradient-text mb-4">ZippyCoin Network Statistics</h3>
+            <p className="text-crypto-dark-300">Real-time metrics from our quantum-resistant blockchain</p>
           </div>
           
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
             {stats.map((stat, index) => (
               <div key={index} className="text-center p-4 bg-crypto-dark-800/30 rounded-xl border border-crypto-dark-700/30">
-                <div className="text-2xl font-bold text-green-400 mb-1">{stat.value}</div>
+                <div className="text-2xl font-bold text-zippy-400 mb-1">{stat.value}</div>
                 <div className="text-sm text-crypto-dark-300">{stat.label}</div>
               </div>
             ))}
@@ -82,12 +82,12 @@ const Footer = () => {
               </div>
               <div className="flex flex-col">
                 <span className="text-xl font-display font-bold gradient-text">ZippyCoin</span>
-                <span className="text-xs text-crypto-dark-400 font-medium">by Zippy Foundation</span>
+                <span className="text-xs text-crypto-dark-400 font-medium">Quantum-Resistant Cryptocurrency</span>
               </div>
             </Link>
             <p className="text-crypto-dark-300 leading-relaxed mb-6">
               The world's first production-ready quantum-resistant trust-based cryptocurrency ecosystem.
-              Powering sustainable innovation through the Zippy Foundation.
+              Built for security, scalability, and real-world adoption.
             </p>
             <div className="flex space-x-4">
               {socialLinks.map((social, index) => (
@@ -108,18 +108,18 @@ const Footer = () => {
           {/* Ecosystem Links */}
           <div>
             <h3 className="text-lg font-semibold mb-4 text-white font-display flex items-center space-x-2">
-              <Globe className="h-5 w-5 text-green-400" />
+              <Globe className="h-5 w-5 text-zippy-400" />
               <span>Ecosystem</span>
             </h3>
             <ul className="space-y-3">
-              {ecosystemLinks['Zippy Foundation'].map((link, index) => (
+              {ecosystemLinks['ZippyCoin Ecosystem'].map((link, index) => (
                 <li key={index}>
                   {link.external ? (
                     <a
                       href={link.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-crypto-dark-300 hover:text-green-400 transition-colors flex items-center space-x-2 group"
+                      className="text-crypto-dark-300 hover:text-zippy-400 transition-colors flex items-center space-x-2 group"
                     >
                       <link.icon className="h-4 w-4" />
                       <span>{link.name}</span>
@@ -128,7 +128,7 @@ const Footer = () => {
                   ) : (
                     <Link
                       to={link.href}
-                      className="text-crypto-dark-300 hover:text-green-400 transition-colors flex items-center space-x-2"
+                      className="text-crypto-dark-300 hover:text-zippy-400 transition-colors flex items-center space-x-2"
                     >
                       <link.icon className="h-4 w-4" />
                       <span>{link.name}</span>
@@ -171,55 +171,52 @@ const Footer = () => {
           ))}
         </div>
 
-        {/* Enhanced Foundation Section */}
+        {/* Enhanced Technology Section */}
         <div className="border-t border-crypto-dark-800/50 pt-8 mb-8">
-          <div className="bg-gradient-to-r from-green-900/20 to-crypto-dark-800/40 border border-green-500/20 rounded-2xl p-8">
+          <div className="bg-gradient-to-r from-zippy-900/20 to-crypto-dark-800/40 border border-zippy-500/20 rounded-2xl p-8">
             <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6">
               <div className="flex-1">
                 <div className="flex items-center space-x-3 mb-4">
-                  <Bike className="h-8 w-8 text-green-400" />
+                  <Brain className="h-8 w-8 text-zippy-400" />
                   <div>
-                    <h4 className="text-xl font-semibold text-white font-display">Zippy Foundation Ecosystem</h4>
-                    <p className="text-green-400 text-sm font-medium">Building sustainable cities through innovation</p>
+                    <h4 className="text-xl font-semibold text-white font-display">ZippyCoin Technology</h4>
+                    <p className="text-zippy-400 text-sm font-medium">Quantum-resistant, trust-based cryptocurrency</p>
                   </div>
                 </div>
                 <p className="text-crypto-dark-300 text-sm leading-relaxed mb-4">
-                  ZippyCoin powers the entire Zippy Foundation ecosystem, from eco-courier services on Zippy.Bike
-                  to trust-based financial services. Join 50,000+ active users earning ZippyCoin for sustainable actions.
+                  ZippyCoin combines post-quantum cryptography with mathematical trust scoring to create
+                  the most secure and scalable cryptocurrency ecosystem. Experience true innovation in digital finance.
                 </p>
                 <div className="flex flex-wrap gap-4 text-sm">
-                  <div className="flex items-center space-x-2 text-green-400">
-                    <div className="w-2 h-2 bg-green-400 rounded-full"></div>
-                    <span>2M+ Eco-Deliveries</span>
-                  </div>
                   <div className="flex items-center space-x-2 text-zippy-400">
                     <div className="w-2 h-2 bg-zippy-400 rounded-full"></div>
-                    <span>ZippyTrust Enabled</span>
+                    <span>100K+ TPS Performance</span>
                   </div>
                   <div className="flex items-center space-x-2 text-quantum-400">
                     <div className="w-2 h-2 bg-quantum-400 rounded-full"></div>
-                    <span>Quantum-Resistant</span>
+                    <span>Post-Quantum Security</span>
+                  </div>
+                  <div className="flex items-center space-x-2 text-green-400">
+                    <div className="w-2 h-2 bg-green-400 rounded-full"></div>
+                    <span>Trust-Based DeFi</span>
                   </div>
                 </div>
               </div>
               
               <div className="flex flex-col sm:flex-row gap-4">
-                <a
-                  href="https://go.zippyfoundation.org"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center space-x-2 bg-green-500 hover:bg-green-400 text-white px-6 py-3 rounded-xl font-semibold transition-colors shadow-lg"
-                >
-                  <Bike className="h-5 w-5" />
-                  <span>Join Zippy.Bike</span>
-                  <ExternalLink className="h-4 w-4" />
-                </a>
                 <Link
                   to="#zippytrust"
-                  className="inline-flex items-center space-x-2 btn-outline"
+                  className="inline-flex items-center space-x-2 bg-zippy-500 hover:bg-zippy-400 text-white px-6 py-3 rounded-xl font-semibold transition-colors shadow-lg"
                 >
                   <Brain className="h-5 w-5" />
                   <span>Explore ZippyTrust</span>
+                </Link>
+                <Link
+                  to="/developers"
+                  className="inline-flex items-center space-x-2 btn-outline"
+                >
+                  <Globe className="h-5 w-5" />
+                  <span>Developer Portal</span>
                 </Link>
               </div>
             </div>

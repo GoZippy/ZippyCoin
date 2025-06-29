@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { Bike, Coins, TrendingUp, Shield, Users, ExternalLink, Zap, Globe, Calculator } from 'lucide-react'
+import { Coins, TrendingUp, Shield, Users, Calculator, Zap, Globe, CheckCircle, ArrowRight } from 'lucide-react'
 import { useState } from 'react'
 
 const Ecosystem = () => {
@@ -7,22 +7,12 @@ const Ecosystem = () => {
 
   const integrations = [
     {
-      icon: Bike,
-      title: 'Zippy.Bike Rewards',
-      description: 'Earn ZippyCoin through eco-friendly courier services. Real-world utility driving adoption.',
-      features: ['Carbon-Neutral Delivery', 'Instant Rewards', 'Global Network'],
-      status: 'Live',
-      link: 'https://go.zippyfoundation.org',
-      statusColor: 'bg-green-500/20 text-green-300 border-green-500/30',
-      metrics: { users: '50K+', deliveries: '2M+', co2Saved: '500 tons' }
-    },
-    {
       icon: TrendingUp,
       title: 'Trust-Weighted DeFi',
       description: 'Revolutionary DeFi protocols where your trust score determines benefits and access.',
       features: ['2.0x Yield Multipliers', 'Reduced Collateral', 'Dynamic Fees'],
-      status: 'Q2 2025',
-      statusColor: 'bg-zippy-500/20 text-zippy-300 border-zippy-500/30',
+      status: 'Live Beta',
+      statusColor: 'bg-green-500/20 text-green-300 border-green-500/30',
       metrics: { protocols: '12', tvl: '$25M', apy: '15.7%' }
     },
     {
@@ -33,6 +23,15 @@ const Ecosystem = () => {
       status: 'Q1 2025',
       statusColor: 'bg-quantum-500/20 text-quantum-300 border-quantum-500/30',
       metrics: { countries: '12', wallets: '47', trustScore: '100%' }
+    },
+    {
+      icon: Globe,
+      title: 'Enterprise Solutions',
+      description: 'Scalable blockchain solutions for businesses requiring quantum-resistant security.',
+      features: ['Custom Integration', 'API Access', 'Enterprise Support'],
+      status: 'Q2 2025',
+      statusColor: 'bg-zippy-500/20 text-zippy-300 border-zippy-500/30',
+      metrics: { partners: '8', volume: '$50M', uptime: '99.9%' }
     }
   ]
 
@@ -84,11 +83,11 @@ const Ecosystem = () => {
           viewport={{ once: true }}
         >
           <h2 className="gradient-text mb-6">
-            Ecosystem & Integrations
+            Ecosystem & Applications
           </h2>
           <p className="text-xl text-crypto-dark-300 max-w-3xl mx-auto leading-relaxed">
-            ZippyCoin powers real-world applications and revolutionary financial protocols
-            through the trusted Zippy Foundation ecosystem.
+            ZippyCoin powers revolutionary financial protocols and enterprise solutions
+            through quantum-resistant technology and trust-based economics.
           </p>
         </motion.div>
 
@@ -169,18 +168,13 @@ const Ecosystem = () => {
                 </div>
               )}
 
-              {integration.link && (
-                <motion.a
-                  href={integration.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center space-x-2 text-zippy-400 hover:text-zippy-300 font-medium transition-colors group"
-                  whileHover={{ x: 5 }}
-                >
-                  <span>Learn More</span>
-                  <ExternalLink className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
-                </motion.a>
-              )}
+              <motion.button
+                className="inline-flex items-center space-x-2 text-zippy-400 hover:text-zippy-300 font-medium transition-colors group"
+                whileHover={{ x: 5 }}
+              >
+                <span>Learn More</span>
+                <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
+              </motion.button>
             </motion.div>
           ))}
         </div>
@@ -356,7 +350,7 @@ const Ecosystem = () => {
           </div>
         </motion.div>
 
-        {/* Foundation Integration */}
+        {/* ZippyCoin Technology */}
         <motion.div
           className="bg-gradient-to-r from-crypto-dark-800 to-crypto-dark-900 rounded-3xl p-8 lg:p-12 border border-crypto-dark-700/50 shadow-2xl"
           initial={{ opacity: 0, y: 30 }}
@@ -373,18 +367,18 @@ const Ecosystem = () => {
             </motion.div>
             
             <h3 className="text-2xl lg:text-3xl font-bold gradient-text mb-6">
-              Powered by Zippy Foundation
+              Powered by Advanced Technology
             </h3>
             <p className="text-crypto-dark-300 text-lg mb-8 leading-relaxed">
-              ZippyCoin is the backbone of the Zippy Foundation ecosystem, providing secure, 
-              sustainable rewards for eco-friendly services and driving adoption through real-world utility.
+              ZippyCoin's quantum-resistant architecture and trust-based economics enable
+              secure, scalable financial applications for the next generation of cryptocurrency users.
             </p>
             
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
               {[
-                { icon: Bike, label: 'Eco-Courier Services', desc: 'Carbon-neutral delivery network', stat: '2M+ deliveries' },
-                { icon: Coins, label: 'Instant Rewards', desc: 'Real-time ZippyCoin earnings', stat: '500K+ earned' },
-                { icon: Globe, label: 'Global Community', desc: 'Sustainable ecosystem growth', stat: '50+ countries' }
+                { icon: Shield, label: 'Quantum-Resistant', desc: 'Post-quantum cryptographic security', stat: '128-bit security' },
+                { icon: Zap, label: 'High Performance', desc: 'Dual-layer architecture scaling', stat: '100K+ TPS' },
+                { icon: CheckCircle, label: 'Trust Engine', desc: 'Mathematical trust scoring', stat: '99.7% accuracy' }
               ].map((item, index) => (
                 <motion.div 
                   key={index} 
@@ -403,17 +397,15 @@ const Ecosystem = () => {
               ))}
             </div>
 
-            <motion.a
-              href="https://go.zippyfoundation.org"
-              target="_blank"
-              rel="noopener noreferrer"
+            <motion.button
               className="inline-flex items-center space-x-2 btn-outline group"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
+              onClick={() => document.getElementById('technology')?.scrollIntoView({ behavior: 'smooth' })}
             >
-              <span>Visit Zippy Foundation</span>
-              <ExternalLink className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
-            </motion.a>
+              <span>Learn About Our Technology</span>
+              <ArrowRight className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
+            </motion.button>
           </div>
         </motion.div>
       </div>

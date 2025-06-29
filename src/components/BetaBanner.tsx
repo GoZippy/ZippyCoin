@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { X, Info, ExternalLink, Bike } from 'lucide-react'
+import { X, Info, Zap, Shield } from 'lucide-react'
 
 const BetaBanner = () => {
   const [isVisible, setIsVisible] = useState(true)
@@ -23,7 +23,7 @@ const BetaBanner = () => {
     <AnimatePresence>
       {isVisible && (
         <motion.div
-          className="fixed top-0 left-0 right-0 z-50 bg-gradient-to-r from-green-900/80 to-crypto-dark-900/80 backdrop-blur-md border-b border-crypto-dark-700/30 h-[60px]"
+          className="fixed top-0 left-0 right-0 z-50 bg-gradient-to-r from-zippy-900/80 to-crypto-dark-900/80 backdrop-blur-md border-b border-crypto-dark-700/30 h-[60px]"
           initial={{ y: -60, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           exit={{ y: -60, opacity: 0 }}
@@ -32,23 +32,18 @@ const BetaBanner = () => {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex items-center justify-between py-3 text-sm">
               <div className="flex items-center space-x-3 flex-1">
-                <div className="p-1.5 bg-green-500/20 rounded-full flex-shrink-0">
-                  <Bike className="h-3.5 w-3.5 text-green-400" />
+                <div className="p-1.5 bg-zippy-500/20 rounded-full flex-shrink-0">
+                  <Zap className="h-3.5 w-3.5 text-zippy-400" />
                 </div>
                 <div className="flex items-center space-x-4 flex-1">
                   <span className="text-crypto-dark-200 font-medium">
-                    <span className="text-green-300 font-semibold">Live on Zippy.Bike:</span>
-                    <span className="ml-2">Earn ZippyCoin rewards for eco-deliveries</span>
+                    <span className="text-zippy-300 font-semibold">Developer Preview:</span>
+                    <span className="ml-2">Experience quantum-resistant cryptocurrency with ZippyTrust scoring</span>
                   </span>
-                  <a
-                    href="https://go.zippyfoundation.org"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="hidden sm:inline-flex items-center space-x-1 text-green-400 hover:text-green-300 transition-colors font-medium"
-                  >
-                    <span>Join 50K+ Couriers</span>
-                    <ExternalLink className="h-3 w-3" />
-                  </a>
+                  <div className="hidden sm:flex items-center space-x-2 text-quantum-400">
+                    <Shield className="h-3 w-3" />
+                    <span className="text-xs font-medium">Post-Quantum Security</span>
+                  </div>
                 </div>
               </div>
               

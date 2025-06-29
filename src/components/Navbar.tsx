@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { motion } from 'framer-motion'
-import { Menu, X, Zap, ExternalLink, User, LogOut, Wallet, Bike, Brain } from 'lucide-react'
+import { Menu, X, Zap, User, LogOut, Wallet, Brain, Globe, Shield } from 'lucide-react'
 import { useAuth } from '../hooks/useAuth'
 import AuthModal from './Auth/AuthModal'
 
@@ -47,25 +47,25 @@ const Navbar = () => {
 
   const ecosystemLinks = [
     {
-      name: 'Zippy.Bike',
-      href: 'https://go.zippyfoundation.org',
-      description: 'Eco-courier services',
-      icon: Bike,
-      color: 'text-green-400'
-    },
-    {
-      name: 'ZippyTrust',
+      name: 'ZippyTrust Engine',
       href: '#zippytrust',
-      description: 'Trust scoring engine',
+      description: 'Trust scoring system',
       icon: Brain,
       color: 'text-zippy-400'
     },
     {
-      name: 'ZippyCoin',
-      href: '/',
-      description: 'Quantum-resistant crypto',
+      name: 'DeFi Protocols',
+      href: '#ecosystem',
+      description: 'Trust-weighted finance',
       icon: Zap,
       color: 'text-quantum-400'
+    },
+    {
+      name: 'Network Status',
+      href: '/network',
+      description: 'Live network metrics',
+      icon: Shield,
+      color: 'text-green-400'
     }
   ]
 
@@ -110,7 +110,7 @@ const Navbar = () => {
               </motion.div>
               <div className="flex flex-col">
                 <span className="text-xl font-display font-bold gradient-text">ZippyCoin</span>
-                <span className="text-xs text-crypto-dark-400 font-medium -mt-1">by Zippy Foundation</span>
+                <span className="text-xs text-crypto-dark-400 font-medium -mt-1">Quantum-Resistant Crypto</span>
               </div>
             </Link>
 
@@ -139,13 +139,13 @@ const Navbar = () => {
                     exit={{ opacity: 0, y: -10 }}
                   >
                     {ecosystemLinks.map((link, index) => (
-                      <motion.a
+                      <motion.button
                         key={index}
-                        href={link.href}
-                        target={link.href.startsWith('http') ? '_blank' : '_self'}
-                        rel={link.href.startsWith('http') ? 'noopener noreferrer' : ''}
-                        className="flex items-center space-x-3 px-4 py-3 hover:bg-crypto-dark-800/50 transition-colors group"
-                        onClick={() => setShowEcosystemMenu(false)}
+                        onClick={() => {
+                          handleNavClick(link.href)
+                          setShowEcosystemMenu(false)
+                        }}
+                        className="flex items-center space-x-3 px-4 py-3 hover:bg-crypto-dark-800/50 transition-colors group w-full text-left"
                         whileHover={{ x: 5 }}
                       >
                         <link.icon className={`h-5 w-5 ${link.color}`} />
@@ -155,10 +155,7 @@ const Navbar = () => {
                           </div>
                           <div className="text-xs text-crypto-dark-400">{link.description}</div>
                         </div>
-                        {link.href.startsWith('http') && (
-                          <ExternalLink className="h-4 w-4 text-crypto-dark-400 group-hover:text-zippy-400 transition-colors" />
-                        )}
-                      </motion.a>
+                      </motion.button>
                     ))}
                   </motion.div>
                 )}
@@ -262,13 +259,13 @@ const Navbar = () => {
               <div className="border-b border-crypto-dark-800/50 pb-4 mb-4">
                 <div className="text-sm font-semibold text-crypto-dark-400 mb-2 px-4">Ecosystem</div>
                 {ecosystemLinks.map((link, index) => (
-                  <motion.a
+                  <motion.button
                     key={index}
-                    href={link.href}
-                    target={link.href.startsWith('http') ? '_blank' : '_self'}
-                    rel={link.href.startsWith('http') ? 'noopener noreferrer' : ''}
-                    className="flex items-center space-x-3 px-4 py-3 text-crypto-dark-300 hover:text-white hover:bg-crypto-dark-800/50 rounded-lg text-sm font-medium transition-colors"
-                    onClick={() => setIsOpen(false)}
+                    onClick={() => {
+                      handleNavClick(link.href)
+                      setIsOpen(false)
+                    }}
+                    className="flex items-center space-x-3 px-4 py-3 text-crypto-dark-300 hover:text-white hover:bg-crypto-dark-800/50 rounded-lg text-sm font-medium transition-colors w-full text-left"
                     whileHover={{ x: 5 }}
                     whileTap={{ scale: 0.98 }}
                   >
@@ -277,10 +274,7 @@ const Navbar = () => {
                       <div>{link.name}</div>
                       <div className="text-xs text-crypto-dark-400">{link.description}</div>
                     </div>
-                    {link.href.startsWith('http') && (
-                      <ExternalLink className="h-4 w-4" />
-                    )}
-                  </motion.a>
+                  </motion.button>
                 ))}
               </div>
 
