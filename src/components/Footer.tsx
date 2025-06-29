@@ -40,8 +40,8 @@ const Footer = () => {
 
   const socialLinks = [
     { icon: Github, href: 'https://github.com/zippyfoundation/ZippyCoin_v2.0.0', label: 'GitHub' },
-    { icon: Twitter, href: 'https://twitter.com/zippyfoundation', label: 'Twitter' },
-    { icon: MessageSquare, href: 'https://discord.gg/zippycoin', label: 'Discord' },
+    { icon: Twitter, href: '#', label: 'Twitter (Coming Soon)' },
+    { icon: MessageSquare, href: '#', label: 'Discord (Coming Soon)' },
     { icon: Mail, href: 'mailto:community@zippyfoundation.org', label: 'Email' }
   ]
 
