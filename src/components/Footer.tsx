@@ -1,18 +1,27 @@
 import { Link } from 'react-router-dom'
-import { Zap, Github, Twitter, MessageSquare, ExternalLink, Mail } from 'lucide-react'
+import { Zap, Github, Twitter, MessageSquare, ExternalLink, Mail, Bike, Brain, Globe } from 'lucide-react'
 
 const Footer = () => {
+  const ecosystemLinks = {
+    'Zippy Foundation': [
+      { name: 'Zippy.Bike', href: 'https://go.zippyfoundation.org', external: true, icon: Bike },
+      { name: 'ZippyTrust Engine', href: '#zippytrust', external: false, icon: Brain },
+      { name: 'Foundation Portal', href: 'https://go.zippyfoundation.org/about', external: true, icon: Globe },
+      { name: 'Impact Reports', href: 'https://go.zippyfoundation.org/impact', external: true, icon: ExternalLink }
+    ]
+  }
+
   const footerLinks = {
     Technology: [
+      { name: 'ZippyTrust Engine', href: '#zippytrust', external: false },
       { name: 'Architecture', href: '#technology', external: false },
-      { name: 'Trust Engine', href: '#technology', external: false },
       { name: 'Security', href: '#technology', external: false },
       { name: 'Performance', href: '#technology', external: false }
     ],
     Ecosystem: [
-      { name: 'Zippy.Bike', href: 'https://go.zippyfoundation.org', external: true },
       { name: 'DeFi Protocols', href: '#ecosystem', external: false },
       { name: 'Origin Wallets', href: '#ecosystem', external: false },
+      { name: 'Trust Benefits', href: '#zippytrust', external: false },
       { name: 'Partnerships', href: '#ecosystem', external: false }
     ],
     Developers: [
@@ -36,9 +45,33 @@ const Footer = () => {
     { icon: Mail, href: 'mailto:community@zippyfoundation.org', label: 'Email' }
   ]
 
+  const stats = [
+    { label: 'Active Couriers', value: '50K+' },
+    { label: 'ZPC Distributed', value: '2.5M' },
+    { label: 'CO₂ Saved', value: '500 tons' },
+    { label: 'Countries', value: '12+' }
+  ]
+
   return (
     <footer className="bg-crypto-dark-950 border-t border-crypto-dark-800/50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        {/* Ecosystem Stats Header */}
+        <div className="border-b border-crypto-dark-800/50 pb-12 mb-12">
+          <div className="text-center mb-8">
+            <h3 className="text-2xl font-bold gradient-text mb-4">Zippy Foundation Ecosystem Impact</h3>
+            <p className="text-crypto-dark-300">Real-world impact powered by ZippyCoin technology</p>
+          </div>
+          
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
+            {stats.map((stat, index) => (
+              <div key={index} className="text-center p-4 bg-crypto-dark-800/30 rounded-xl border border-crypto-dark-700/30">
+                <div className="text-2xl font-bold text-green-400 mb-1">{stat.value}</div>
+                <div className="text-sm text-crypto-dark-300">{stat.label}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+
         {/* Main footer content */}
         <div className="grid lg:grid-cols-6 gap-8 mb-12">
           {/* Logo and description */}
@@ -47,11 +80,14 @@ const Footer = () => {
               <div className="p-2 bg-gradient-to-r from-zippy-600 to-zippy-700 rounded-lg shadow-lg group-hover:shadow-zippy-500/25 transition-all">
                 <Zap className="h-6 w-6 text-white" />
               </div>
-              <span className="text-xl font-display font-bold gradient-text">ZippyCoin</span>
+              <div className="flex flex-col">
+                <span className="text-xl font-display font-bold gradient-text">ZippyCoin</span>
+                <span className="text-xs text-crypto-dark-400 font-medium">by Zippy Foundation</span>
+              </div>
             </Link>
             <p className="text-crypto-dark-300 leading-relaxed mb-6">
               The world's first production-ready quantum-resistant trust-based cryptocurrency ecosystem.
-              Built for security, scalability, and real-world adoption.
+              Powering sustainable innovation through the Zippy Foundation.
             </p>
             <div className="flex space-x-4">
               {socialLinks.map((social, index) => (
@@ -67,6 +103,40 @@ const Footer = () => {
                 </a>
               ))}
             </div>
+          </div>
+
+          {/* Ecosystem Links */}
+          <div>
+            <h3 className="text-lg font-semibold mb-4 text-white font-display flex items-center space-x-2">
+              <Globe className="h-5 w-5 text-green-400" />
+              <span>Ecosystem</span>
+            </h3>
+            <ul className="space-y-3">
+              {ecosystemLinks['Zippy Foundation'].map((link, index) => (
+                <li key={index}>
+                  {link.external ? (
+                    <a
+                      href={link.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-crypto-dark-300 hover:text-green-400 transition-colors flex items-center space-x-2 group"
+                    >
+                      <link.icon className="h-4 w-4" />
+                      <span>{link.name}</span>
+                      <ExternalLink className="h-3 w-3 group-hover:translate-x-0.5 transition-transform" />
+                    </a>
+                  ) : (
+                    <Link
+                      to={link.href}
+                      className="text-crypto-dark-300 hover:text-green-400 transition-colors flex items-center space-x-2"
+                    >
+                      <link.icon className="h-4 w-4" />
+                      <span>{link.name}</span>
+                    </Link>
+                  )}
+                </li>
+              ))}
+            </ul>
           </div>
 
           {/* Footer links */}
@@ -101,25 +171,57 @@ const Footer = () => {
           ))}
         </div>
 
-        {/* Foundation link */}
+        {/* Enhanced Foundation Section */}
         <div className="border-t border-crypto-dark-800/50 pt-8 mb-8">
-          <div className="gradient-bg-card border border-crypto-dark-700/30 rounded-2xl p-6">
-            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between">
-              <div>
-                <h4 className="text-lg font-semibold mb-2 text-white font-display">Part of the Zippy Foundation Ecosystem</h4>
-                <p className="text-crypto-dark-300 text-sm leading-relaxed">
-                  Discover how ZippyCoin powers sustainable transportation through Zippy.Bike eco-courier services.
+          <div className="bg-gradient-to-r from-green-900/20 to-crypto-dark-800/40 border border-green-500/20 rounded-2xl p-8">
+            <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6">
+              <div className="flex-1">
+                <div className="flex items-center space-x-3 mb-4">
+                  <Bike className="h-8 w-8 text-green-400" />
+                  <div>
+                    <h4 className="text-xl font-semibold text-white font-display">Zippy Foundation Ecosystem</h4>
+                    <p className="text-green-400 text-sm font-medium">Building sustainable cities through innovation</p>
+                  </div>
+                </div>
+                <p className="text-crypto-dark-300 text-sm leading-relaxed mb-4">
+                  ZippyCoin powers the entire Zippy Foundation ecosystem, from eco-courier services on Zippy.Bike
+                  to trust-based financial services. Join 50,000+ active users earning ZippyCoin for sustainable actions.
                 </p>
+                <div className="flex flex-wrap gap-4 text-sm">
+                  <div className="flex items-center space-x-2 text-green-400">
+                    <div className="w-2 h-2 bg-green-400 rounded-full"></div>
+                    <span>2M+ Eco-Deliveries</span>
+                  </div>
+                  <div className="flex items-center space-x-2 text-zippy-400">
+                    <div className="w-2 h-2 bg-zippy-400 rounded-full"></div>
+                    <span>ZippyTrust Enabled</span>
+                  </div>
+                  <div className="flex items-center space-x-2 text-quantum-400">
+                    <div className="w-2 h-2 bg-quantum-400 rounded-full"></div>
+                    <span>Quantum-Resistant</span>
+                  </div>
+                </div>
               </div>
-              <a
-                href="https://go.zippyfoundation.org"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="mt-4 sm:mt-0 inline-flex items-center space-x-2 btn-outline group"
-              >
-                <span>Visit Foundation</span>
-                <ExternalLink className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
-              </a>
+              
+              <div className="flex flex-col sm:flex-row gap-4">
+                <a
+                  href="https://go.zippyfoundation.org"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center space-x-2 bg-green-500 hover:bg-green-400 text-white px-6 py-3 rounded-xl font-semibold transition-colors shadow-lg"
+                >
+                  <Bike className="h-5 w-5" />
+                  <span>Join Zippy.Bike</span>
+                  <ExternalLink className="h-4 w-4" />
+                </a>
+                <Link
+                  to="#zippytrust"
+                  className="inline-flex items-center space-x-2 btn-outline"
+                >
+                  <Brain className="h-5 w-5" />
+                  <span>Explore ZippyTrust</span>
+                </Link>
+              </div>
             </div>
           </div>
         </div>
@@ -129,7 +231,7 @@ const Footer = () => {
           <div className="text-crypto-dark-400 text-sm mb-4 sm:mb-0">
             <p>&copy; 2024 ZippyFoundation. All rights reserved.</p>
             <p className="mt-1">
-              Documentation and tools are MIT licensed. Core implementation is proprietary.
+              ZippyCoin documentation and tools are MIT licensed. Core implementation is proprietary.
             </p>
           </div>
           <div className="flex space-x-6 text-sm">

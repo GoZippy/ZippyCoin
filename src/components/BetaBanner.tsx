@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { X, Info } from 'lucide-react'
+import { X, Info, ExternalLink, Bike } from 'lucide-react'
 
 const BetaBanner = () => {
   const [isVisible, setIsVisible] = useState(true)
@@ -23,7 +23,7 @@ const BetaBanner = () => {
     <AnimatePresence>
       {isVisible && (
         <motion.div
-          className="fixed top-0 left-0 right-0 z-50 bg-crypto-dark-950/80 backdrop-blur-md border-b border-crypto-dark-700/30 h-[60px]"
+          className="fixed top-0 left-0 right-0 z-50 bg-gradient-to-r from-green-900/80 to-crypto-dark-900/80 backdrop-blur-md border-b border-crypto-dark-700/30 h-[60px]"
           initial={{ y: -60, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           exit={{ y: -60, opacity: 0 }}
@@ -31,17 +31,25 @@ const BetaBanner = () => {
         >
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex items-center justify-between py-3 text-sm">
-              <div className="flex items-center space-x-3">
-                <div className="p-1.5 bg-zippy-500/20 rounded-full">
-                  <Info className="h-3.5 w-3.5 text-zippy-400 flex-shrink-0" />
+              <div className="flex items-center space-x-3 flex-1">
+                <div className="p-1.5 bg-green-500/20 rounded-full flex-shrink-0">
+                  <Bike className="h-3.5 w-3.5 text-green-400" />
                 </div>
-                <span className="text-crypto-dark-200 font-medium">
-                  <span className="text-zippy-300 font-semibold">Beta Preview:</span>
-                  <span className="ml-2">This site contains placeholder data and is under active development.</span>
-                  <span className="hidden lg:inline text-crypto-dark-300 ml-2">
-                    All features and information are subject to change as we build toward mainnet launch.
+                <div className="flex items-center space-x-4 flex-1">
+                  <span className="text-crypto-dark-200 font-medium">
+                    <span className="text-green-300 font-semibold">Live on Zippy.Bike:</span>
+                    <span className="ml-2">Earn ZippyCoin rewards for eco-deliveries</span>
                   </span>
-                </span>
+                  <a
+                    href="https://go.zippyfoundation.org"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hidden sm:inline-flex items-center space-x-1 text-green-400 hover:text-green-300 transition-colors font-medium"
+                  >
+                    <span>Join 50K+ Couriers</span>
+                    <ExternalLink className="h-3 w-3" />
+                  </a>
+                </div>
               </div>
               
               <button

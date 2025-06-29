@@ -4,6 +4,7 @@ import { motion } from 'framer-motion'
 import BetaBanner from './components/BetaBanner'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
+import ZippyTrust from './components/ZippyTrust'
 import Technology from './components/Technology'
 import Ecosystem from './components/Ecosystem'
 import Roadmap from './components/Roadmap'
@@ -20,6 +21,7 @@ function HomePage() {
       transition={{ duration: 0.5 }}
     >
       <Hero />
+      <ZippyTrust />
       <Technology />
       <Ecosystem />
       <Roadmap />

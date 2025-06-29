@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { motion } from 'framer-motion'
-import { Menu, X, Zap, ExternalLink, User, LogOut, Wallet } from 'lucide-react'
+import { Menu, X, Zap, ExternalLink, User, LogOut, Wallet, Bike, Brain } from 'lucide-react'
 import { useAuth } from '../hooks/useAuth'
 import AuthModal from './Auth/AuthModal'
 
@@ -10,6 +10,7 @@ const Navbar = () => {
   const [scrolled, setScrolled] = useState(false)
   const [showAuthModal, setShowAuthModal] = useState(false)
   const [showUserMenu, setShowUserMenu] = useState(false)
+  const [showEcosystemMenu, setShowEcosystemMenu] = useState(false)
   const [bannerVisible, setBannerVisible] = useState(true)
   const location = useLocation()
   const { user, signOut } = useAuth()
@@ -35,6 +36,7 @@ const Navbar = () => {
   }, [])
 
   const navItems = [
+    { name: 'ZippyTrust', href: '#zippytrust' },
     { name: 'Technology', href: '#technology' },
     { name: 'Ecosystem', href: '#ecosystem' },
     { name: 'Roadmap', href: '#roadmap' },
@@ -43,15 +45,36 @@ const Navbar = () => {
     { name: 'Network', href: '/network' },
   ]
 
+  const ecosystemLinks = [
+    {
+      name: 'Zippy.Bike',
+      href: 'https://go.zippyfoundation.org',
+      description: 'Eco-courier services',
+      icon: Bike,
+      color: 'text-green-400'
+    },
+    {
+      name: 'ZippyTrust',
+      href: '#zippytrust',
+      description: 'Trust scoring engine',
+      icon: Brain,
+      color: 'text-zippy-400'
+    },
+    {
+      name: 'ZippyCoin',
+      href: '/',
+      description: 'Quantum-resistant crypto',
+      icon: Zap,
+      color: 'text-quantum-400'
+    }
+  ]
+
   const handleNavClick = (href: string) => {
     setIsOpen(false)
     if (href.startsWith('#')) {
-      // Handle anchor links
       if (location.pathname !== '/') {
-        // If not on home page, navigate to home first
         window.location.href = '/' + href
       } else {
-        // On home page, smooth scroll to section
         const element = document.querySelector(href)
         if (element) {
           element.scrollIntoView({ behavior: 'smooth' })
@@ -85,12 +108,63 @@ const Navbar = () => {
               >
                 <Zap className="h-6 w-6 text-white" />
               </motion.div>
-              <span className="text-xl font-display font-bold gradient-text">ZippyCoin</span>
+              <div className="flex flex-col">
+                <span className="text-xl font-display font-bold gradient-text">ZippyCoin</span>
+                <span className="text-xs text-crypto-dark-400 font-medium -mt-1">by Zippy Foundation</span>
+              </div>
             </Link>
 
             {/* Desktop Navigation */}
-            <div className="hidden md:flex items-center space-x-8">
-              {navItems.map((item) => (
+            <div className="hidden md:flex items-center space-x-6">
+              {/* Ecosystem Dropdown */}
+              <div className="relative">
+                <motion.button
+                  onClick={() => setShowEcosystemMenu(!showEcosystemMenu)}
+                  className="flex items-center space-x-1 text-sm font-medium text-crypto-dark-300 hover:text-white transition-colors relative group"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  <span>Ecosystem</span>
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                  </svg>
+                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-zippy-400 to-quantum-400 group-hover:w-full transition-all duration-300"></span>
+                </motion.button>
+
+                {showEcosystemMenu && (
+                  <motion.div
+                    className="absolute top-full mt-2 w-64 bg-crypto-dark-900/95 backdrop-blur-md rounded-xl shadow-xl border border-crypto-dark-700/50 py-4"
+                    initial={{ opacity: 0, y: -10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -10 }}
+                  >
+                    {ecosystemLinks.map((link, index) => (
+                      <motion.a
+                        key={index}
+                        href={link.href}
+                        target={link.href.startsWith('http') ? '_blank' : '_self'}
+                        rel={link.href.startsWith('http') ? 'noopener noreferrer' : ''}
+                        className="flex items-center space-x-3 px-4 py-3 hover:bg-crypto-dark-800/50 transition-colors group"
+                        onClick={() => setShowEcosystemMenu(false)}
+                        whileHover={{ x: 5 }}
+                      >
+                        <link.icon className={`h-5 w-5 ${link.color}`} />
+                        <div className="flex-1">
+                          <div className="text-white font-medium group-hover:text-zippy-300 transition-colors">
+                            {link.name}
+                          </div>
+                          <div className="text-xs text-crypto-dark-400">{link.description}</div>
+                        </div>
+                        {link.href.startsWith('http') && (
+                          <ExternalLink className="h-4 w-4 text-crypto-dark-400 group-hover:text-zippy-400 transition-colors" />
+                        )}
+                      </motion.a>
+                    ))}
+                  </motion.div>
+                )}
+              </div>
+
+              {navItems.slice(1).map((item) => (
                 <motion.button
                   key={item.name}
                   onClick={() => handleNavClick(item.href)}
@@ -107,18 +181,6 @@ const Navbar = () => {
                   <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-zippy-400 to-quantum-400 group-hover:w-full transition-all duration-300"></span>
                 </motion.button>
               ))}
-              <motion.a
-                href="https://go.zippyfoundation.org"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center space-x-1 text-sm font-medium text-crypto-dark-300 hover:text-white transition-colors relative group"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                <span>Foundation</span>
-                <ExternalLink className="h-3 w-3" />
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-zippy-400 to-quantum-400 group-hover:w-full transition-all duration-300"></span>
-              </motion.a>
               
               {user ? (
                 <div className="relative">
@@ -196,7 +258,33 @@ const Navbar = () => {
             exit={{ opacity: 0, height: 0 }}
           >
             <div className="px-4 py-4 space-y-2">
-              {navItems.map((item) => (
+              {/* Ecosystem links in mobile */}
+              <div className="border-b border-crypto-dark-800/50 pb-4 mb-4">
+                <div className="text-sm font-semibold text-crypto-dark-400 mb-2 px-4">Ecosystem</div>
+                {ecosystemLinks.map((link, index) => (
+                  <motion.a
+                    key={index}
+                    href={link.href}
+                    target={link.href.startsWith('http') ? '_blank' : '_self'}
+                    rel={link.href.startsWith('http') ? 'noopener noreferrer' : ''}
+                    className="flex items-center space-x-3 px-4 py-3 text-crypto-dark-300 hover:text-white hover:bg-crypto-dark-800/50 rounded-lg text-sm font-medium transition-colors"
+                    onClick={() => setIsOpen(false)}
+                    whileHover={{ x: 5 }}
+                    whileTap={{ scale: 0.98 }}
+                  >
+                    <link.icon className={`h-5 w-5 ${link.color}`} />
+                    <div className="flex-1">
+                      <div>{link.name}</div>
+                      <div className="text-xs text-crypto-dark-400">{link.description}</div>
+                    </div>
+                    {link.href.startsWith('http') && (
+                      <ExternalLink className="h-4 w-4" />
+                    )}
+                  </motion.a>
+                ))}
+              </div>
+
+              {navItems.slice(1).map((item) => (
                 <motion.button
                   key={item.name}
                   onClick={() => handleNavClick(item.href)}
@@ -207,17 +295,7 @@ const Navbar = () => {
                   {item.name}
                 </motion.button>
               ))}
-              <motion.a
-                href="https://go.zippyfoundation.org"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center space-x-2 px-4 py-3 text-crypto-dark-300 hover:text-white hover:bg-crypto-dark-800/50 rounded-lg text-sm font-medium transition-colors"
-                whileHover={{ x: 5 }}
-                whileTap={{ scale: 0.98 }}
-              >
-                <span>Foundation</span>
-                <ExternalLink className="h-3 w-3" />
-              </motion.a>
+              
               <motion.button 
                 onClick={() => {
                   setIsOpen(false)
