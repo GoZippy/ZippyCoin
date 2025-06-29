@@ -232,15 +232,24 @@ const Footer = () => {
             </p>
           </div>
           <div className="flex space-x-6 text-sm">
-            <a href="#" className="text-crypto-dark-400 hover:text-zippy-400 transition-colors">
+            <button 
+              onClick={() => alert('Privacy Policy coming soon')}
+              className="text-crypto-dark-400 hover:text-zippy-400 transition-colors"
+            >
               Privacy Policy
-            </a>
-            <a href="#" className="text-crypto-dark-400 hover:text-zippy-400 transition-colors">
+            </button>
+            <button 
+              onClick={() => alert('Terms of Service coming soon')}
+              className="text-crypto-dark-400 hover:text-zippy-400 transition-colors"
+            >
               Terms of Service
-            </a>
-            <a href="#" className="text-crypto-dark-400 hover:text-zippy-400 transition-colors">
+            </button>
+            <button 
+              onClick={() => alert('Security documentation coming soon')}
+              className="text-crypto-dark-400 hover:text-zippy-400 transition-colors"
+            >
               Security
-            </a>
+            </button>
           </div>
         </div>
       </div>

@@ -161,7 +161,7 @@ const Navbar = () => {
                 )}
               </div>
 
-              {navItems.slice(1).map((item) => (
+              {navItems.slice(1, -2).map((item) => (
                 <motion.button
                   key={item.name}
                   onClick={() => handleNavClick(item.href)}
@@ -178,6 +178,23 @@ const Navbar = () => {
                   <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-zippy-400 to-quantum-400 group-hover:w-full transition-all duration-300"></span>
                 </motion.button>
               ))}
+
+              {/* Developers and Network as separate route links */}
+              <Link
+                to="/developers"
+                className="text-sm font-medium text-crypto-dark-300 hover:text-white transition-colors relative group"
+              >
+                Developers
+                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-zippy-400 to-quantum-400 group-hover:w-full transition-all duration-300"></span>
+              </Link>
+              
+              <Link
+                to="/network"
+                className="text-sm font-medium text-crypto-dark-300 hover:text-white transition-colors relative group"
+              >
+                Network
+                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-zippy-400 to-quantum-400 group-hover:w-full transition-all duration-300"></span>
+              </Link>
               
               {user ? (
                 <div className="relative">
